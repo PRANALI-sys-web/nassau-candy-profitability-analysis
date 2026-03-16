@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 st.title("Nassau Candy Product Profitability Dashboard")
 
 # Load dataset
-df = pd.read_csv("datasets/clean_nassau_candy_data.csv")
+df = pd.read_csv("clean_nassau_candy_data.csv")
 
 st.subheader("Dataset Preview")
 st.write(df.head())
