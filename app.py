@@ -13,13 +13,15 @@ st.write(df.head())
 # Top Products
 top_products = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False).head(10)
 
-st.subheader("Top 10 Profitable Products")
+fig, ax = plt.subplots()
+top_products.plot(kind="bar", ax=ax)
 
-fig1, ax1 = plt.subplots()
-top_products.plot(kind="bar", ax=ax1)
-plt.xticks(rotation=45)
+plt.xticks(rotation=45, ha="right")
+plt.title("Top 10 Profitable Products")
+plt.xlabel("Product Name")
+plt.ylabel("Gross Profit")
 
-st.pyplot(fig1)
+st.pyplot(fig)
 
 # Region Profit
 region_profit = df.groupby("Region")["Gross Profit"].sum()
