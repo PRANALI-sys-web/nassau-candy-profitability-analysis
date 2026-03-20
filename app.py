@@ -17,7 +17,7 @@ df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
 
 # =========================
-# SIDEBAR FILTERS
+# SIDEBAR FILTER
 # =========================
 st.sidebar.header("Filters")
 
@@ -28,6 +28,16 @@ division_filter = st.sidebar.selectbox(
 
 if division_filter != "All":
     df = df[df["Division"] == division_filter]
+
+# =========================
+# FUNCTION: ADD BORDER
+# =========================
+def style_plot(ax):
+    ax.set_facecolor("#f9f9f9")  # light background
+    for spine in ax.spines.values():
+        spine.set_visible(True)
+        spine.set_color("black")   # border color
+        spine.set_linewidth(1.2)
 
 # =========================
 # DATA PREVIEW
@@ -51,11 +61,13 @@ fig1, ax1 = plt.subplots(figsize=(12,5))
 
 top_products.plot(kind="bar", ax=ax1, color="skyblue")
 
+style_plot(ax1)
+
 ax1.set_title("Top 10 Products by Profit")
 ax1.set_xlabel("Product Name")
 ax1.set_ylabel("Gross Profit")
 
-plt.xticks(rotation=60, ha='right')   # FIX label overlap
+plt.xticks(rotation=60, ha='right')
 plt.tight_layout()
 
 st.pyplot(fig1)
@@ -70,6 +82,8 @@ st.subheader("🌍 Profit by Region")
 fig2, ax2 = plt.subplots(figsize=(10,4))
 
 region_profit.plot(kind="bar", ax=ax2, color="orange")
+
+style_plot(ax2)
 
 ax2.set_title("Profit Distribution by Region")
 ax2.set_xlabel("Region")
@@ -89,6 +103,8 @@ fig3, ax3 = plt.subplots(figsize=(10,5))
 
 ax3.scatter(df["Units"], df["Gross Profit"], alpha=0.6)
 
+style_plot(ax3)
+
 ax3.set_xlabel("Units Sold")
 ax3.set_ylabel("Gross Profit")
 ax3.set_title("Units vs Profit")
@@ -98,7 +114,7 @@ plt.tight_layout()
 st.pyplot(fig3)
 
 # =========================
-# KPI SECTION (BONUS)
+# KPI SECTION
 # =========================
 st.subheader("📌 Key Performance Indicators")
 
