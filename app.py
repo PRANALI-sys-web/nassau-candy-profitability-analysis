@@ -149,12 +149,30 @@ if df.empty:
     st.warning("No data available")
 else:
     pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False)
+
+    # cumulative %
     pareto_cum = pareto.cumsum() / pareto.sum() * 100
 
-    fig6, ax6 = plt.subplots(figsize=(10,4))
-    pareto.head(10).plot(kind="bar", ax=ax6)
-    ax6.set_title("Top Products Profit Contribution")
-    st.pyplot(fig6)
+    fig, ax1 = plt.subplots(figsize=(10,5))
+
+    # Bar chart (Top 10 products)
+    pareto.head(10).plot(kind="bar", ax=ax1)
+    ax1.set_ylabel("Profit")
+    ax1.set_title("Top Products Profit Contribution")
+
+    # Line chart (cumulative %)
+    ax2 = ax1.twinx()
+    pareto_cum.head(10).plot(ax=ax2, color="red", marker="o")
+    ax2.set_ylabel("Cumulative %")
+
+    # 80% line
+    ax2.axhline(80, color="green", linestyle="--")
+    ax2.set_ylim(0, 100)
+
+    plt.xticks(rotation=60, ha='right')
+    plt.tight_layout()
+
+    st.pyplot(fig)
 
 st.subheader("Cost vs Sales Analysis")
 
