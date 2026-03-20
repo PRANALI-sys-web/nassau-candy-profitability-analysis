@@ -123,3 +123,26 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Total Sales", f"{df['Sales'].sum():,.0f}")
 col2.metric("Total Profit", f"{df['Gross Profit'].sum():,.0f}")
 col3.metric("Avg Margin %", f"{df['Margin %'].mean():.2f}%")
+
+# Division Performance
+st.subheader("Division Performance")
+
+division_profit = df.groupby("Division")["Gross Profit"].sum()
+division_margin = df.groupby("Division")["Margin %"].mean()
+
+# Profit chart
+# Margin chart
+
+st.subheader("Pareto Analysis (Top Profit Contributors)")
+
+st.subheader("Cost vs Sales Analysis")
+
+date_range = st.sidebar.date_input("Select Date Range", [])
+
+margin_filter = st.sidebar.slider("Select Min Margin %", 0, 100, 0)
+df = df[df["Margin %"] >= margin_filter]
+
+product_search = st.sidebar.text_input("Search Product")
+
+if product_search:
+    df = df[df["Product Name"].str.contains(product_search, case=False)]
