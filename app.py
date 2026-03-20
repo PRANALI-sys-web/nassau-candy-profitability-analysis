@@ -127,15 +127,46 @@ col3.metric("Avg Margin %", f"{df['Margin %'].mean():.2f}%")
 # Division Performance
 st.subheader("Division Performance")
 
-division_profit = df.groupby("Division")["Gross Profit"].sum()
-division_margin = df.groupby("Division")["Margin %"].mean()
+if df.empty:
+    st.warning("No data available")
+else:
+    division_profit = df.groupby("Division")["Gross Profit"].sum()
+    division_margin = df.groupby("Division")["Margin %"].mean()
 
-# Profit chart
-# Margin chart
+    fig4, ax4 = plt.subplots(figsize=(8,4))
+    division_profit.plot(kind="bar", ax=ax4)
+    ax4.set_title("Profit by Division")
+    st.pyplot(fig4)
+
+    fig5, ax5 = plt.subplots(figsize=(8,4))
+    division_margin.plot(kind="bar", ax=ax5)
+    ax5.set_title("Margin % by Division")
+    st.pyplot(fig5)
 
 st.subheader("Pareto Analysis (Top Profit Contributors)")
 
+if df.empty:
+    st.warning("No data available")
+else:
+    pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False)
+    pareto_cum = pareto.cumsum() / pareto.sum() * 100
+
+    fig6, ax6 = plt.subplots(figsize=(10,4))
+    pareto.head(10).plot(kind="bar", ax=ax6)
+    ax6.set_title("Top Products Profit Contribution")
+    st.pyplot(fig6)
+
 st.subheader("Cost vs Sales Analysis")
+
+if df.empty:
+    st.warning("No data available")
+else:
+    fig7, ax7 = plt.subplots(figsize=(8,4))
+    ax7.scatter(df["Cost"], df["Sales"])
+    ax7.set_xlabel("Cost")
+    ax7.set_ylabel("Sales")
+    ax7.set_title("Cost vs Sales")
+    st.pyplot(fig7)
 
 date_range = st.sidebar.date_input("Select Date Range", [])
 
