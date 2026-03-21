@@ -148,7 +148,7 @@ st.subheader("Pareto Analysis (Top Profit Contributors)")
 if df.empty:
     st.warning("No data available")
 else:
-    pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False)
+    pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False).head(10)
 
     # cumulative %
     pareto_cum = pareto.cumsum() / pareto.sum() * 100
@@ -165,27 +165,15 @@ else:
     ax2.plot(pareto.index, pareto_cum, color='red', marker='o')
     ax2.set_ylabel("Cumulative %")
 
-    # ✅ ADD HERE (correct place)
+    # ✅ Fix duplicate ticks
+    ax2.set_yticks([0, 20, 40, 60, 80, 100])
+    ax2.set_ylim(0, 100)
+
+    # 80% line
     ax2.axhline(80, linestyle='--', color='green', label='80% Threshold')
     ax2.legend()
 
-    st.pyplot(fig)
-
-    # Bar chart (Top 10 products)
-    pareto.head(10).plot(kind="bar", ax=ax1)
-    ax1.set_ylabel("Profit")
-    ax1.set_title("Top Products Profit Contribution")
-
-    # Line chart (cumulative %)
-    ax2 = ax1.twinx()
-    pareto_cum.head(10).plot(ax=ax2, color="red", marker="o")
-    ax2.set_ylabel("Cumulative %")
-
-    # 80% line
-    ax2.axhline(80, color="green", linestyle="--")
-    ax2.set_ylim(0, 100)
-
-    plt.xticks(rotation=60, ha='right')
+    plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
 
     st.pyplot(fig)
