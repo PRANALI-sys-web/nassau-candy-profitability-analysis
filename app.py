@@ -155,6 +155,22 @@ else:
 
     fig, ax1 = plt.subplots(figsize=(10,5))
 
+    # Bar chart (Profit)
+    ax1.bar(pareto.index, pareto.values)
+    ax1.set_ylabel("Profit")
+    ax1.set_xticklabels(pareto.index, rotation=45, ha='right')
+
+    # Line chart (Cumulative %)
+    ax2 = ax1.twinx()
+    ax2.plot(pareto.index, pareto_cum, color='red', marker='o')
+    ax2.set_ylabel("Cumulative %")
+
+    # ✅ ADD HERE (correct place)
+    ax2.axhline(80, linestyle='--', color='green', label='80% Threshold')
+    ax2.legend()
+
+    st.pyplot(fig)
+
     # Bar chart (Top 10 products)
     pareto.head(10).plot(kind="bar", ax=ax1)
     ax1.set_ylabel("Profit")
