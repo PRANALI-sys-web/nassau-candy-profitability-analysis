@@ -10,7 +10,7 @@ Study relationship between units sold and profit
 Perform Pareto analysis (80/20 rule)
 Build an interactive dashboard for insights
 
-📊 Dashboard Features
+## 📊Dashboard Features
 ✔ Key Performance Indicators (Sales, Profit, Margin %)
 ✔ Top 10 Profitable Products
 ✔ Profit by Region
@@ -19,14 +19,14 @@ Build an interactive dashboard for insights
 ✔ Pareto Analysis (80% Contribution)
 ✔ Cost vs Sales Analysis
 
-🛠️ Tools & Technologies
+##🛠️Tools & Technologies
 🐍 Python
 📊 Pandas
 📈 Matplotlib
 🌐 Streamlit
 📓 Jupyter Notebook
 
-📂 Project Structure
+## 📂Project Structure
 📁 nassau-candy-profitability-analysis/
 │
 ├── 📄 app.py
@@ -42,7 +42,7 @@ Build an interactive dashboard for insights
 - Nassau_Candy_Profitability_Analysis.ipynb – Data analysis and visualization notebook
 - app.py – Streamlit dashboard application
 
-🚀 How to Run
+## 🚀How to Run
 pip install -r requirements.txt
 streamlit run app.py
 
