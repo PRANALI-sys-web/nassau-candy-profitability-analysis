@@ -19,23 +19,23 @@ This project focuses on analyzing product line profitability and margin performa
 - ✔ Pareto Analysis (80% Contribution)
 - ✔ Cost vs Sales Analysis
 
-##🛠️Tools & Technologies
-🐍 Python
-📊 Pandas
-📈 Matplotlib
-🌐 Streamlit
-📓 Jupyter Notebook
+## 🛠️Tools & Technologies
+- 🐍 Python
+- 📊 Pandas
+- 📈 Matplotlib
+- 🌐 Streamlit
+- 📓 Jupyter Notebook
 
 ## 📂Project Structure
-📁 nassau-candy-profitability-analysis/
-│
-├── 📄 app.py
-├── 📄 requirements.txt
-├── 📄 README.md
-├── 📊 clean_nassau_candy_data.csv
-│
-├── 📁 report/
-│   └── 📄 Final_Report.pdf
+- 📁 nassau-candy-profitability-analysis/
+- │
+- ├── 📄 app.py
+- ├── 📄 requirements.txt
+- ├── 📄 README.md
+- ├── 📊 clean_nassau_candy_data.csv
+- │
+- ├── 📁 report/
+- │   └── 📄 Final_Report.pdf
 
 ## Files in this Repository
 - clean_nassau_candy_data.csv – Cleaned dataset used for analysis
@@ -43,8 +43,8 @@ This project focuses on analyzing product line profitability and margin performa
 - app.py – Streamlit dashboard application
 
 ## 🚀How to Run
-pip install -r requirements.txt
-streamlit run app.py
+- pip install -r requirements.txt
+- streamlit run app.py
 
 ## Author
 Pranali Wakchaure
