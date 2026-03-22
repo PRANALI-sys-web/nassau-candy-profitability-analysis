@@ -45,8 +45,12 @@ This project focuses on analyzing product line profitability and margin performa
 ## 🚀How to Run
 - pip install -r requirements.txt
 - streamlit run app.py
+  
 ## 🌐 Live Demo
 https://n9iuaueaes85kvuegkkxsm.streamlit.app/
+
+## 📄 Project Report
+[View Report](report/Final_Report.pdf)
 
 ## Author
 Pranali Wakchaure
