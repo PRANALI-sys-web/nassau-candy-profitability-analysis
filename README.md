@@ -45,7 +45,10 @@ This project focuses on analyzing product line profitability and margin performa
 ## 🚀How to Run
 - pip install -r requirements.txt
 - streamlit run app.py
-  
+
+## 📊 Dataset
+👉 [View Dataset](clean_nassau_candy_data.csv)
+
 ## 🌐 Live Demo
 https://n9iuaueaes85kvuegkkxsm.streamlit.app/
 
