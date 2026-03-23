@@ -50,7 +50,7 @@ This project focuses on analyzing product line profitability and margin performa
 https://n9iuaueaes85kvuegkkxsm.streamlit.app/
 
 ## 📄 Project Report
-[View Report](report/Final_Report.pdf)
+👉 [Click here to view report](Nassau%20Candy%20Distributor%20Report%20.pdf)
 
 ## Author
 Pranali Wakchaure
