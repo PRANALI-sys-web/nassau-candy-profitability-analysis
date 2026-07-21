@@ -306,8 +306,6 @@ with col2:
     st.subheader("🌍 Profit by Region")
     st.plotly_chart(fig2, use_container_width=True)
 
-
-
     
 
 # =========================
@@ -397,6 +395,7 @@ ax_trend.set_xticklabels(
 plt.tight_layout()
 
 st.pyplot(fig_trend, use_container_width=True)
+
 # =========================
 # DYNAMIC BUSINESS INSIGHTS
 # =========================
@@ -450,9 +449,7 @@ with col2:
 # =========================
 # UNITS VS PROFIT + DIVISION PERFORMANCE
 # =========================
-# =========================
-# UNITS VS PROFIT + DIVISION PERFORMANCE
-# =========================
+
 
 col1, col2 = st.columns(2)
 
@@ -529,11 +526,8 @@ with col5:
         ax1.set_title("Top Profit Contributors")
 
         ax1.set_xticks(range(len(pareto.index)))
-        ax1.set_xticklabels(
-            pareto.index,
-            rotation=45,
-            ha="right"
-        )
+        
+        
 
         ax2 = ax1.twinx()
 
