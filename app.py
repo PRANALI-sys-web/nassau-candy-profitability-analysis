@@ -14,11 +14,9 @@ st.markdown("""
 /* Sidebar */
 section[data-testid="stSidebar"]{
     background-color:#0F172A;
-}
-
-/* Sidebar Text */
-section[data-testid="stSidebar"] *{
-    color:white;
+    width:260px !important;
+    min-width:260px !important;
+    max-width:260px !important;
 }
 
 /* Main Title */
@@ -44,7 +42,11 @@ h2,h3{
 </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Nassau Candy Product Profitability Dashboard")
+st.markdown("""
+<h1 style='font-size:34px; margin-bottom:0px;'>
+📊 Nassau Candy Product Profitability Dashboard
+</h1>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 ### 📈 Business Problem
