@@ -307,8 +307,6 @@ else:
 # PARETO + COST VS SALES
 # =========================
 
-col5, col6 = st.columns(2)
-
 with col5:
     st.subheader("📊 Pareto Analysis")
 
@@ -320,20 +318,20 @@ with col5:
 
         pareto_cum = pareto.cumsum() / pareto.sum() * 100
 
-        fig, ax1 = plt.subplots(figsize=(6,3.5))
+        fig, ax1 = plt.subplots(figsize=(7,4))
 
         ax1.bar(pareto.index, pareto.values)
 
-ax1.set_ylabel("Profit")
-ax1.set_xlabel("Product Name")
-ax1.set_title("Top Profit Contributors")
+        ax1.set_ylabel("Profit")
+        ax1.set_xlabel("Product Name")
+        ax1.set_title("Top Profit Contributors")
 
-ax1.set_xticks(range(len(pareto.index)))
-ax1.set_xticklabels(
-    pareto.index,
-    rotation=45,
-    ha="right"
-)
+        ax1.set_xticks(range(len(pareto.index)))
+        ax1.set_xticklabels(
+            pareto.index,
+            rotation=45,
+            ha="right"
+        )
 
         ax2 = ax1.twinx()
 
