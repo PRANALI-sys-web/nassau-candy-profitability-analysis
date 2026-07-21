@@ -192,28 +192,7 @@ with col2:
     st.plotly_chart(fig2, use_container_width=True)
 
 
-# =========================
-# UNITS VS PROFIT + DIVISION PERFORMANCE
-# =========================
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("📈 Units vs Profit")
-
-    fig3, ax3 = plt.subplots(figsize=(6,3.5))
-
-    ax3.scatter(df["Units"], df["Gross Profit"], alpha=0.6)
-
-    style_plot(ax3)
-
-    ax3.set_xlabel("Units Sold")
-    ax3.set_ylabel("Gross Profit")
-    ax3.set_title("Units vs Profit")
-
-    plt.tight_layout()
-
-    st.pyplot(fig3, use_container_width=True)
     
 
 # =========================
