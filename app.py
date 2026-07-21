@@ -150,7 +150,6 @@ fig2 = px.bar(
 fig2.update_layout(
     plot_bgcolor="white",
     paper_bgcolor="white",
-    title_x=0.5,
     xaxis_title="Region",
     yaxis_title="Gross Profit"
 )
