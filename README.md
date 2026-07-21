@@ -32,7 +32,7 @@ This project answers key business questions:
 
 ---
 
-# 📊 Dashboard: Nassau Candy Sales Performance & Profitability Dashboard
+# 📊 Dashboard: Sales Performance & Profitability Dashboard
 
 The interactive dashboard provides:
 
