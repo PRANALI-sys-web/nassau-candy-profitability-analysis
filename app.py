@@ -85,6 +85,7 @@ The objective is to help stakeholders identify high-performing products, profita
 
 
 df = pd.read_csv("clean_nassau_candy_data.csv")
+st.write(df.columns)
 
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
