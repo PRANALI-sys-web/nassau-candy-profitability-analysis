@@ -279,6 +279,38 @@ col5.metric(
     f"{df['Product Name'].nunique():,}"
 )
 # =========================
+# SALES TREND ANALYSIS
+# =========================
+
+st.subheader("📈 Sales Trend Over Time")
+
+df["Order Date"] = pd.to_datetime(df["Order Date"])
+
+monthly_sales = (
+    df.groupby(df["Order Date"].dt.to_period("M"))["Sales"]
+    .sum()
+)
+
+monthly_sales.index = monthly_sales.index.astype(str)
+
+fig_trend, ax_trend = plt.subplots(figsize=(10,4))
+
+ax_trend.plot(
+    monthly_sales.index,
+    monthly_sales.values,
+    marker="o"
+)
+
+ax_trend.set_xlabel("Month")
+ax_trend.set_ylabel("Sales")
+ax_trend.set_title("Monthly Sales Performance")
+
+plt.xticks(rotation=45)
+
+plt.tight_layout()
+
+st.pyplot(fig_trend, use_container_width=True)
+# =========================
 # DIVISION PERFORMANCE
 # =========================
 
