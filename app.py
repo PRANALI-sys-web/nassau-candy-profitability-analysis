@@ -160,7 +160,8 @@ if product_search:
             case=False
         )
     ]
-    # =========================
+    
+# =========================
 # EXECUTIVE SUMMARY
 # =========================
 
@@ -386,7 +387,7 @@ ax_trend.set_ylabel("Sales")
 ax_trend.set_title("Monthly Sales Performance")
 
 # Center the labels
-ax_trend.set_xticks(range(len(monthly_sales.index)))
+
 ax_trend.set_xticklabels(
     monthly_sales.index,
     rotation=45,
