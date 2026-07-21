@@ -397,62 +397,58 @@ plt.tight_layout()
 
 st.pyplot(fig_trend, use_container_width=True)
 # =========================
-# BUSINESS INSIGHTS
+# DYNAMIC BUSINESS INSIGHTS
 # =========================
 
 st.subheader("💡 Business Insights")
 
-# Top Division by Profit
-top_division = (
-    df.groupby("Division")["Gross Profit"]
+highest_sales_month = (
+    df.groupby(df["Order Date"].dt.to_period("M"))["Sales"]
     .sum()
     .idxmax()
 )
 
-top_division_profit = (
-    df.groupby("Division")["Gross Profit"]
+lowest_region = (
+    df.groupby("Region")["Gross Profit"]
     .sum()
-    .max()
+    .idxmin()
 )
 
-# Top Product by Profit
-top_product = (
-    df.groupby("Product Name")["Gross Profit"]
-    .sum()
+highest_margin_product = (
+    df.groupby("Product Name")["Margin %"]
+    .mean()
     .idxmax()
 )
 
-top_product_profit = (
-    df.groupby("Product Name")["Gross Profit"]
-    .sum()
-    .max()
+lowest_margin_product = (
+    df.groupby("Product Name")["Margin %"]
+    .mean()
+    .idxmin()
 )
 
-# Average Margin
-avg_margin = df["Margin %"].mean()
-
-
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
-    st.info(
-        f"🏆 Top Performing Division\n\n"
-        f"{top_division}\n\n"
-        f"Profit: ${top_division_profit:,.0f}"
-    )
+    st.success(f"""
+✅ **Highest Sales Month:** {highest_sales_month}
+
+🏆 **Best Performing Region:** {top_region}
+
+📦 **Highest Margin Product:** {highest_margin_product}
+""")
 
 with col2:
-    st.success(
-        f"📦 Highest Profit Product\n\n"
-        f"{top_product}\n\n"
-        f"Profit: ${top_product_profit:,.0f}"
-    )
+    st.warning(f"""
+⚠️ **Lowest Profit Region:** {lowest_region}
 
-with col3:
-    st.warning(
-        f"📊 Average Margin\n\n"
-        f"{avg_margin:.2f}%"
-    )
+📉 **Lowest Margin Product:** {lowest_margin_product}
+
+📊 **Average Margin:** {avg_margin:.2f}%
+""")
+
+# =========================
+# UNITS VS PROFIT + DIVISION PERFORMANCE
+# =========================
 # =========================
 # UNITS VS PROFIT + DIVISION PERFORMANCE
 # =========================
@@ -462,51 +458,52 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("📈 Units vs Profit")
 
-fig3 = px.scatter(
-    df,
-    x="Units",
-    y="Gross Profit",
-    color="Division",
-    hover_data=["Product Name"],
-    title=None
-)
+    fig3 = px.scatter(
+        df,
+        x="Units",
+        y="Gross Profit",
+        color="Division",
+        hover_data=["Product Name"],
+        title=None
+    )
 
-fig3.update_layout(
-    plot_bgcolor="white",
-    paper_bgcolor="white",
-    xaxis_title="Units Sold",
-    yaxis_title="Gross Profit"
-)
+    fig3.update_layout(
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        xaxis_title="Units Sold",
+        yaxis_title="Gross Profit"
+    )
 
-st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, use_container_width=True)
 
 
 with col2:
     st.subheader("📊 Division Performance")
 
-division_profit = (
-    df.groupby("Division")["Gross Profit"]
-    .sum()
-    .reset_index()
-)
+    division_profit = (
+        df.groupby("Division")["Gross Profit"]
+        .sum()
+        .reset_index()
+    )
 
-fig4 = px.bar(
-    division_profit,
-    x="Division",
-    y="Gross Profit",
-    color="Gross Profit",
-    color_continuous_scale="Blues",
-    text_auto=".2s"
-)
+    fig4 = px.bar(
+        division_profit,
+        x="Division",
+        y="Gross Profit",
+        color="Gross Profit",
+        color_continuous_scale="Blues",
+        text_auto=".2s"
+    )
 
-fig4.update_layout(
-    plot_bgcolor="white",
-    paper_bgcolor="white",
-    xaxis_title="Division",
-    yaxis_title="Profit"
-)
+    fig4.update_layout(
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        xaxis_title="Division",
+        yaxis_title="Profit"
+    )
 
-st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, use_container_width=True)
+
 # =========================
 # PARETO + COST VS SALES
 # =========================
@@ -557,21 +554,23 @@ with col5:
 with col6:
     st.subheader("💰 Cost vs Sales")
 
-fig7 = px.scatter(
-    df,
-    x="Cost",
-    y="Sales",
-    color="Division",
-    hover_data=["Product Name"],
-    title=None
-)
+    fig7 = px.scatter(
+        df,
+        x="Cost",
+        y="Sales",
+        color="Division",
+        hover_data=["Product Name"],
+        title=None
+    )
 
-fig7.update_layout(
-    plot_bgcolor="white",
-    paper_bgcolor="white"
-)
+    fig7.update_layout(
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        xaxis_title="Cost",
+        yaxis_title="Sales"
+    )
 
-st.plotly_chart(fig7, use_container_width=True)# ========================
+    st.plotly_chart(fig7, use_container_width=True)# ========================
 st.markdown("---")
 st.caption("Developed by Pranali Wakchaure | Data Analytics Portfolio Project")
 
