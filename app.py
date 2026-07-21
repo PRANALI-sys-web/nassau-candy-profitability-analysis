@@ -116,15 +116,14 @@ fig1 = px.bar(
     y="Gross Profit",
     color="Gross Profit",
     color_continuous_scale="Blues",
-    title="Top 10 Products by Profit"
+    title=None
 )
 
 fig1.update_layout(
     plot_bgcolor="white",
     paper_bgcolor="white",
     xaxis_title="Product",
-    yaxis_title="Gross Profit",
-    title_x=0.5
+    yaxis_title="Gross Profit"
 )
 
 
@@ -145,7 +144,7 @@ fig2 = px.bar(
     y="Gross Profit",
     color="Gross Profit",
     color_continuous_scale="Teal",
-    title="Profit Distribution by Region"
+    title=None
 )
 
 fig2.update_layout(
