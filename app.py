@@ -130,7 +130,6 @@ fig1.update_layout(
 
 st.plotly_chart(fig1, use_container_width=True)
 
-st.pyplot(fig1, use_container_width=True)
 
 # =========================
 # REGION PROFIT
