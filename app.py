@@ -54,6 +54,18 @@ h2,h3{
 st.markdown("""
 <h1 style='font-size:30px;font-weight:700;margin-bottom:0px;'>
 📊Sales Performance & Profitability Analytics Dashboard
+st.markdown("""
+### 📌 Business Insights
+
+This dashboard provides analysis of sales performance, profitability, margins, 
+product contribution, and division-wise performance.
+
+**Key Analysis Areas:**
+- Sales and profit performance tracking
+- Division profitability comparison
+- Product contribution analysis using Pareto Analysis
+- Cost and sales relationship evaluation
+""")
 </h1>
 """, unsafe_allow_html=True)
 
