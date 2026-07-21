@@ -52,14 +52,18 @@ h2,h3{
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<h1 style='font-size:30px;font-weight:700;margin-bottom:0px;'>
-📊Sales Performance & Profitability Analytics Dashboard
-st.markdown("""
-### 📌 Business Insights
+## 📊 Sales Performance & Profitability Analytics Dashboard
 
-This dashboard provides analysis of sales performance, profitability, margins, 
-product contribution, and division-wise performance.
+### 📈 Business Overview
+This interactive dashboard analyzes Nassau Candy's sales and profitability performance 
+by evaluating product performance, division-wise contribution, margins, and key business metrics.
 
+The objective is to help stakeholders identify profitable products, understand sales trends, 
+and make data-driven business decisions.
+
+### 🛠️ Technology Stack
+Python | Streamlit | Pandas | Matplotlib
+""")
 **Key Analysis Areas:**
 - Sales and profit performance tracking
 - Division profitability comparison
