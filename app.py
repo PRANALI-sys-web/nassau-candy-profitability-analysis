@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # Page config
 st.set_page_config(layout="wide")
 
-st.title("Nassau Candy Product Profitability Dashboard")
+title("Nassau Candy Product Profitability Dashboard")
 
 # Load dataset
 df = pd.read_csv("clean_nassau_candy_data.csv")
