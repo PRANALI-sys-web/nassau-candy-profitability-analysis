@@ -422,6 +422,7 @@ with col4:
         ax=ax5
     )
 
+   
     for container in ax5.containers:
         ax5.bar_label(
             container,
@@ -431,6 +432,11 @@ with col4:
 
     ax5.set_xlabel("Division")
     ax5.set_ylabel("Margin %")
+
+    ax5.set_ylim(
+        0,
+        division_margin.max() + 10
+    )
 
     plt.xticks(rotation=45)
     plt.tight_layout()
