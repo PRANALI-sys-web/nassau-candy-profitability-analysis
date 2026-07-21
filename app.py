@@ -250,24 +250,58 @@ col4.metric(
     f"{df['Margin %'].mean():.2f}%"
 )
 
-# Division Performance
-st.subheader("Division Performance")
+# =========================
+# DIVISION PERFORMANCE
+# =========================
+
+col3, col4 = st.columns(2)
 
 if df.empty:
     st.warning("No data available")
+
 else:
     division_profit = df.groupby("Division")["Gross Profit"].sum()
     division_margin = df.groupby("Division")["Margin %"].mean()
 
-    fig4, ax4 = plt.subplots(figsize=(8,4))
-    division_profit.plot(kind="bar", ax=ax4)
-    ax4.set_title("Profit by Division")
-    st.pyplot(fig4)
 
-    fig5, ax5 = plt.subplots(figsize=(8,4))
-    division_margin.plot(kind="bar", ax=ax5)
-    ax5.set_title("Margin % by Division")
-    st.pyplot(fig5)
+    # Profit by Division
+    with col3:
+        st.subheader("📊 Profit by Division")
+
+        fig4, ax4 = plt.subplots(figsize=(6,3.5))
+
+        division_profit.sort_values(ascending=False).plot(
+            kind="bar",
+            ax=ax4
+        )
+
+        ax4.set_xlabel("Division")
+        ax4.set_ylabel("Profit")
+
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+
+        st.pyplot(fig4, use_container_width=True)
+
+
+    # Margin % by Division
+    with col4:
+        st.subheader("📈 Margin % by Division")
+
+        fig5, ax5 = plt.subplots(figsize=(6,3.5))
+
+        division_margin.sort_values(ascending=False).plot(
+            kind="bar",
+            ax=ax5
+        )
+
+        ax5.set_xlabel("Division")
+        ax5.set_ylabel("Margin %")
+
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+
+        st.pyplot(fig5, use_container_width=True)
 
 # =========================
 # PARETO + COST VS SALES
