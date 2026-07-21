@@ -23,7 +23,7 @@ df = pd.read_csv("clean_nassau_candy_data.csv")
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
 
-st.sidebar.title("🎛️ Dashboard Filters")
+st.sidebar.title("🎛️ Filters")
 
 st.sidebar.markdown("---")
 
