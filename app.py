@@ -144,10 +144,6 @@ if product_search:
 )
 
 
-product_search = st.sidebar.text_input(
-    "Search Product"
-)
-
 # =========================
 # FUNCTION: ADD BORDER
 # =========================
