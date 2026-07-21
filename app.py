@@ -511,5 +511,6 @@ with col6:
         plt.tight_layout()
 
         st.pyplot(fig7, use_container_width=True)# ========================
-
+st.markdown("---")
+st.caption("Developed by Pranali Wakchaure | Data Analytics Portfolio Project")
 
