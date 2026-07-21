@@ -109,24 +109,22 @@ top_products = (
     .reset_index()
 )
 
+fig1 = px.bar(
+    top_products,
+    x="Product Name",
+    y="Gross Profit",
+    color="Gross Profit",
+    color_continuous_scale="Blues",
+    title=None
+)
 
 fig1.update_layout(
-    template="plotly_white",
     plot_bgcolor="white",
     paper_bgcolor="white",
-    font=dict(color="black", size=14),
-    xaxis=dict(
-        title="Product",
-        title_font=dict(size=15),
-        tickfont=dict(size=11)
-    ),
-    yaxis=dict(
-        title="Gross Profit",
-        title_font=dict(size=15),
-        tickfont=dict(size=11)
-    ),
-    coloraxis_showscale=False,
-    margin=dict(l=20, r=20, t=20, b=20)
+    xaxis_title="Product",
+    yaxis_title="Gross Profit",
+    xaxis_title_standoff=20,
+    margin=dict(l=20, r=20, t=20, b=80)
 )
 
 
@@ -139,27 +137,26 @@ region_profit = (
     .reset_index()
 )
 
-
-
-fig2.update_layout(
-    template="plotly_white",
-    plot_bgcolor="white",
-    paper_bgcolor="white",
-    font=dict(color="black", size=14),
-    xaxis=dict(
-        title="Region",
-        title_font=dict(size=15),
-        tickfont=dict(size=12)
-    ),
-    yaxis=dict(
-        title="Gross Profit",
-        title_font=dict(size=15),
-        tickfont=dict(size=12)
-    ),
-    coloraxis_showscale=False,
-    margin=dict(l=20, r=20, t=20, b=20)
+fig2 = px.bar(
+    region_profit,
+    x="Region",
+    y="Gross Profit",
+    color="Gross Profit",
+    color_continuous_scale="Teal",
+    title=None
 )
 
+fig2.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    xaxis_title="Region",
+    yaxis_title="Gross Profit",
+    xaxis_title_standoff=20,
+    margin=dict(l=20, r=20, t=20, b=60),
+    font=dict(size=14),
+    xaxis=dict(title=dict(standoff=20)),
+    yaxis=dict(title=dict(standoff=10))
+)
 col1, col2 = st.columns(2)
 
 with col1:
