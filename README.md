@@ -115,6 +115,10 @@ The interactive dashboard provides:
 # 📸 Dashboard Preview
 
 <img width="1445" height="642" alt="image" src="https://github.com/user-attachments/assets/d81279b2-d388-4145-843d-6fec2af59e79" />
+<img width="1512" height="727" alt="image" src="https://github.com/user-attachments/assets/6d5d92ea-4996-465a-b01e-1d22146f7246" />
+<img width="1161" height="546" alt="image" src="https://github.com/user-attachments/assets/9dd44aaa-8d13-43f4-9579-7cde5b39e31c" />
+<img width="1172" height="682" alt="image" src="https://github.com/user-attachments/assets/aeeb0ba6-d771-4805-9e36-b3dced8a535a" />
+<img width="1126" height="525" alt="image" src="https://github.com/user-attachments/assets/20b6f7d0-7474-431e-acc7-d442076ff98c" />
 
 
 # 📂 Project Structure
