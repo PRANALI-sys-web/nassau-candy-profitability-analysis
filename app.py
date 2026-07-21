@@ -221,17 +221,23 @@ with col2:
 
     if df.empty:
         st.warning("No data available")
+else:
+    division_profit = df.groupby("Division")["Gross Profit"].sum()
 
-    else:
-        division_profit = df.groupby("Division")["Gross Profit"].sum()
+    fig4, ax4 = plt.subplots(figsize=(6,3.5))
 
-        fig4, ax4 = plt.subplots(figsize=(6,3.5))
+    division_profit.plot(kind="bar", ax=ax4)
 
-        division_profit.plot(kind="bar", ax=ax4)
+    for container in ax4.containers:
+        ax4.bar_label(
+            container,
+            fmt="%.0f",
+            padding=3
+        )
 
-        ax4.set_title("Profit by Division")
-        ax4.set_xlabel("Division")
-        ax4.set_ylabel("Profit")
+    ax4.set_title("Profit by Division")
+    ax4.set_xlabel("Division")
+    ax4.set_ylabel("Profit")
 
         plt.xticks(rotation=45)
 
