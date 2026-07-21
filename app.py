@@ -214,60 +214,7 @@ with col1:
     plt.tight_layout()
 
     st.pyplot(fig3, use_container_width=True)
-
-
-with col2:
-    st.subheader("📊 Division Performance")
-
-    if df.empty:
-        st.warning("No data available")
-
-    else:
-        division_profit = df.groupby("Division")["Gross Profit"].sum()
-
-        fig4, ax4 = plt.subplots(figsize=(6,3.5))
-
-        division_profit.sort_values(ascending=False).plot(
-    kind="bar",
-    ax=ax4
-)
-
-for container in ax4.containers:
-    ax4.bar_label(
-        container,
-        fmt="%.0f",
-        padding=3
-    )
-
-ax4.set_xlabel("Division")
-ax4.set_ylabel("Profit")
-
-ax4.set_ylim(
-    0,
-    division_profit.max() * 1.15
-)
-
-plt.xticks(rotation=45)
-plt.tight_layout()
-
-st.pyplot(fig4, use_container_width=True)
-        container,
-        fmt="%.0f",
-        padding=3
-    )
-
-ax4.set_xlabel("Division")
-ax4.set_ylabel("Profit")
-
-ax4.set_ylim(
-    0,
-    division_profit.max() * 1.15
-)
-
-plt.xticks(rotation=45)
-plt.tight_layout()
-
-st.pyplot(fig4, use_container_width=True)
+    
 
 # =========================
 # KPI SECTION
@@ -406,15 +353,11 @@ with col3:
 
 col3, col4 = st.columns(2)
 
-if df.empty:
-    st.warning("No data available")
-
-else:
-    division_profit = df.groupby("Division")["Gross Profit"].sum()
-    division_margin = df.groupby("Division")["Margin %"].mean()
+division_profit = df.groupby("Division")["Gross Profit"].sum()
+division_margin = df.groupby("Division")["Margin %"].mean()
 
 
-    # Profit by Division
+# Profit by Division
 with col3:
     st.subheader("📊 Profit by Division")
 
@@ -446,7 +389,8 @@ with col3:
     st.pyplot(fig4, use_container_width=True)
 
 
-   # Margin % by Division
+
+# Margin % by Division
 with col4:
     st.subheader("📈 Margin % by Division")
 
@@ -457,7 +401,6 @@ with col4:
         ax=ax5
     )
 
-   
     for container in ax5.containers:
         ax5.bar_label(
             container,
