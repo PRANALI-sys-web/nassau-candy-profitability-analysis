@@ -103,8 +103,56 @@ division_filter = st.sidebar.selectbox(
     ["All"] + sorted(df["Division"].dropna().unique().tolist())
 )
 
+
+date_range = st.sidebar.date_input(
+    "Select Date Range",
+    []
+)
+
+
+margin_filter = st.sidebar.slider(
+    "Select Min Margin %",
+    0,
+    100,
+    0
+)
+
+
+product_search = st.sidebar.text_input(
+    "Search Product"
+)
+
+
+
 if division_filter != "All":
     df = df[df["Division"] == division_filter]
+
+
+df = df[df["Margin %"] >= margin_filter]
+
+
+if product_search:
+    df = df[
+        df["Product Name"].str.contains(
+            product_search,
+            case=False
+        )
+    ]
+    date_range = st.sidebar.date_input(
+    "Select Date Range",
+    []
+)
+
+margin_filter = st.sidebar.slider(
+    "Select Min Margin %",
+    0,
+    100,
+    0
+)
+
+product_search = st.sidebar.text_input(
+    "Search Product"
+)
 
 # =========================
 # FUNCTION: ADD BORDER
