@@ -1,5 +1,15 @@
 # Nassau Candy Profitability Analysis
 
+# 🌐 Live Dashboard
+
+Explore the interactive Nassau Candy Sales Performance & Profitability Dashboard:
+
+🔗 Streamlit App:
+https://n9iuaueaes85kvuegkkxsm.streamlit.app/
+
+🔗 GitHub Repository:
+https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis
+
 ## 📌 Project Overview
 
 An end-to-end **Data Analytics and Business Intelligence project** focused on analyzing product line profitability and sales performance for **Nassau Candy Distributor**.
@@ -167,25 +177,10 @@ streamlit run app.py
 The cleaned dataset used for analysis contains sales transactions required for profitability and margin analysis.
 
 Dataset:
-`clean_nassau_candy_data.csv`
+👉 View Dataset
+https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis/blob/main/clean_nassau_candy_data.csv
 
----
 
-# 🌐 Live Dashboard
-
-Explore the interactive dashboard:
-
-https://n9iuaueaes85kvuegkkxsm.streamlit.app/
-
----
-
-# 📄 Project Report
-
-Detailed project documentation:
-
-(Add report link)
-
----
 
 # 👩‍💻 Author
 
