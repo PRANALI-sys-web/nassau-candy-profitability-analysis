@@ -32,7 +32,7 @@ This project answers key business questions:
 
 ---
 
-## 🎯 Project Objectives
+## Project Objectives
 
 * Identify top-performing and low-performing products
 * Analyze profitability across product divisions
@@ -171,8 +171,8 @@ streamlit run app.py
 The cleaned dataset used for analysis contains sales transactions required for profitability and margin analysis.
 
 Dataset:
-👉 View Dataset
-https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis/blob/main/clean_nassau_candy_data.csv
+
+📂 [clean_nassau_candy_data.csv](https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis/blob/main/clean_nassau_candy_data.csv)
 
 
 
@@ -180,4 +180,4 @@ https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis/blob/main
 
 **Pranali Wakchaure**
 
-Data Analyst | Python | SQL | Power BI | Data Science
+Aspiring Data Analyst | Python | SQL | Power BI | Data Visualization | Business Intelligence
