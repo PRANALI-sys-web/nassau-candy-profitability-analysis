@@ -163,7 +163,14 @@ def style_plot(ax):
 # =========================
 st.subheader("📄 Dataset Preview")
 st.dataframe(df.head(), height=220, use_container_width=True)
+csv = df.to_csv(index=False).encode("utf-8")
 
+st.download_button(
+    label="📥 Download Filtered Data",
+    data=csv,
+    file_name="filtered_nassau_candy_data.csv",
+    mime="text/csv"
+)
 # =========================
 # TOP PRODUCTS
 # =========================
