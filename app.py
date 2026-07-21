@@ -50,17 +50,10 @@ h2,h3{
 
 </style>
 """, unsafe_allow_html=True)
-
-
-
-st.markdown("""
-#### 📈 Business Problem
-
-This interactivst.markdown("""
 st.markdown("""
 # 📊 Sales Performance & Profitability Analytics Dashboard
 
-## 📈 Business Overview
+### 📈 Business Overview
 
 This interactive dashboard analyzes Nassau Candy's sales and profitability performance 
 by evaluating product performance, division-wise contribution, margins, and key business metrics.
@@ -68,27 +61,28 @@ by evaluating product performance, division-wise contribution, margins, and key 
 The objective is to help stakeholders identify profitable products, understand sales trends, 
 and make data-driven business decisions.
 
-## 🛠️ Technology Stack
-
-Python | Streamlit | Pandas | Matplotlib
-
-## 🔍 Key Analysis Areas
+### 🔍 Key Analysis Areas
 
 - Sales and profit performance tracking
 - Division profitability comparison
 - Product contribution analysis using Pareto Analysis
 - Cost and sales relationship evaluation
 
+### 🛠️ Tech Stack
+
+Python | Streamlit | Pandas | Matplotlib
+
 ---
 """)
+st.markdown("""
+#### 📈 Business Problem
+
 The dashboard analyzes the profitability of Nassau Candy products by examining sales, profit, regional performance, product categories, and key business metrics.
 
 The objective is to help stakeholders identify high-performing products, profitable regions, and opportunities to improve business decisions through data-driven insights.
+
 """)
 
-st.markdown("""
-**🛠️ Tech Stack:** Python | Streamlit | Pandas | Matplotlib
-""")
 
 df = pd.read_csv("clean_nassau_candy_data.csv")
 
