@@ -3,6 +3,46 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
+st.markdown("""
+<style>
+
+/* Main App */
+.stApp{
+    background-color:#F8FAFC;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"]{
+    background-color:#0F172A;
+}
+
+/* Sidebar Text */
+section[data-testid="stSidebar"] *{
+    color:white;
+}
+
+/* Main Title */
+h1{
+    color:#1E3A8A;
+    font-weight:700;
+}
+
+/* Subheaders */
+h2,h3{
+    color:#2563EB;
+}
+
+/* Metric Cards */
+[data-testid="metric-container"]{
+    background:#FFFFFF;
+    border:1px solid #E5E7EB;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.08);
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 st.title("📊 Nassau Candy Product Profitability Dashboard")
 
