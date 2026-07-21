@@ -51,7 +51,7 @@ h2,h3{
 </style>
 """, unsafe_allow_html=True)
 st.markdown("""
-# 📊 Sales Performance & Profitability Analytics Dashboard
+# 📊 Sales Performance & Profitability Dashboard
 
 ### 📈 Business Overview
 
