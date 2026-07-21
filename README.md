@@ -1,5 +1,11 @@
 # Nassau Candy Profitability Analysis
+## 📌 Project Overview
 
+An end-to-end **Data Analytics and Business Intelligence project** focused on analyzing product line profitability and sales performance for **Nassau Candy Distributor**.
+
+The project transforms raw sales data into meaningful business insights by analyzing key financial metrics such as **Sales, Cost, Gross Profit, and Margin Percentage**. An interactive Streamlit dashboard was developed to help identify profitable products, understand margin trends, and support data-driven decision-making.
+
+---
 # 🌐 Live Dashboard
 
 Explore the interactive Nassau Candy Sales Performance & Profitability Dashboard:
@@ -10,13 +16,7 @@ https://n9iuaueaes85kvuegkkxsm.streamlit.app/
 🔗 GitHub Repository:
 https://github.com/PRANALI-sys-web/nassau-candy-profitability-analysis
 
-## 📌 Project Overview
 
-An end-to-end **Data Analytics and Business Intelligence project** focused on analyzing product line profitability and sales performance for **Nassau Candy Distributor**.
-
-The project transforms raw sales data into meaningful business insights by analyzing key financial metrics such as **Sales, Cost, Gross Profit, and Margin Percentage**. An interactive Streamlit dashboard was developed to help identify profitable products, understand margin trends, and support data-driven decision-making.
-
----
 
 ## 🎯 Business Problem
 
@@ -42,7 +42,7 @@ This project answers key business questions:
 
 ---
 
-# 📊 Dashboard: Sales Performance & Profitability Dashboard
+# 📊 Dashboard: Nassau Candy Sales Performance & Profitability Dashboard
 
 The interactive dashboard provides:
 
