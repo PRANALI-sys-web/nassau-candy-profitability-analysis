@@ -14,6 +14,10 @@ This interactive dashboard analyzes the profitability of Nassau Candy products b
 The objective is to help stakeholders identify high-performing products, profitable regions, and opportunities to improve business decisions through data-driven insights.
 """)
 
+st.markdown("""
+**🛠️ Tech Stack:** Python | Streamlit | Pandas | Matplotlib
+""")
+
 df = pd.read_csv("clean_nassau_candy_data.csv")
 
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
