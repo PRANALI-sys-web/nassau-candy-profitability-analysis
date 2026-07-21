@@ -166,8 +166,6 @@ with col2:
     st.subheader("🌍 Profit by Region")
     st.plotly_chart(fig2, use_container_width=True)
 
-st.subheader("📈 Units vs Profit Relationship")
-
 
 # =========================
 # UNITS VS PROFIT
