@@ -348,18 +348,37 @@ with col3:
         f"{avg_margin:.2f}%"
     )
 # =========================
-# DIVISION PERFORMANCE
+# UNITS VS PROFIT + DIVISION PERFORMANCE
 # =========================
 
-col3, col4 = st.columns(2)
+col1, col2 = st.columns(2)
 
-division_profit = df.groupby("Division")["Gross Profit"].sum()
-division_margin = df.groupby("Division")["Margin %"].mean()
+with col1:
+    st.subheader("📈 Units vs Profit")
+
+    fig3, ax3 = plt.subplots(figsize=(6,3.5))
+
+    ax3.scatter(
+        df["Units"],
+        df["Gross Profit"],
+        alpha=0.6
+    )
+
+    style_plot(ax3)
+
+    ax3.set_xlabel("Units Sold")
+    ax3.set_ylabel("Gross Profit")
+    ax3.set_title("Units vs Profit")
+
+    plt.tight_layout()
+
+    st.pyplot(fig3, use_container_width=True)
 
 
-# Profit by Division
-with col3:
-    st.subheader("📊 Profit by Division")
+with col2:
+    st.subheader("📊 Division Performance")
+
+    division_profit = df.groupby("Division")["Gross Profit"].sum()
 
     fig4, ax4 = plt.subplots(figsize=(6,3.5))
 
@@ -380,47 +399,14 @@ with col3:
 
     ax4.set_ylim(
         0,
-        division_profit.max() * 1.15
+        division_profit.max()*1.15
     )
 
     plt.xticks(rotation=45)
+
     plt.tight_layout()
 
     st.pyplot(fig4, use_container_width=True)
-
-
-
-# Margin % by Division
-with col4:
-    st.subheader("📈 Margin % by Division")
-
-    fig5, ax5 = plt.subplots(figsize=(6,3.5))
-
-    division_margin.sort_values(ascending=False).plot(
-        kind="bar",
-        ax=ax5
-    )
-
-    for container in ax5.containers:
-        ax5.bar_label(
-            container,
-            fmt="%.1f%%",
-            padding=3
-        )
-
-    ax5.set_xlabel("Division")
-    ax5.set_ylabel("Margin %")
-
-    ax5.set_ylim(
-        0,
-        division_margin.max() + 10
-    )
-
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-
-    st.pyplot(fig5, use_container_width=True)
-
 # =========================
 # PARETO + COST VS SALES
 # =========================
