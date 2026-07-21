@@ -185,11 +185,27 @@ st.pyplot(fig3, use_container_width=True)
 # =========================
 st.subheader("📌 Key Performance Indicators")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("Total Sales", f"{df['Sales'].sum():,.0f}")
-col2.metric("Total Profit", f"{df['Gross Profit'].sum():,.0f}")
-col3.metric("Avg Margin %", f"{df['Margin %'].mean():.2f}%")
+col1.metric(
+    "💰 Total Sales",
+    f"${df['Sales'].sum():,.0f}"
+)
+
+col2.metric(
+    "📈 Total Profit",
+    f"${df['Gross Profit'].sum():,.0f}"
+)
+
+col3.metric(
+    "📦 Units Sold",
+    f"{int(df['Units'].sum()):,}"
+)
+
+col4.metric(
+    "📊 Avg Margin",
+    f"{df['Margin %'].mean():.2f}%"
+)
 
 # Division Performance
 st.subheader("Division Performance")
