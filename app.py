@@ -51,7 +51,17 @@ h2,h3{
     padding:15px;
     box-shadow:0 3px 8px rgba(0,0,0,0.08);
 }
+#MainMenu {
+    visibility: hidden;
+}
 
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
 </style>
 """, unsafe_allow_html=True)
 st.markdown("""
