@@ -2,23 +2,23 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Page config
 st.set_page_config(layout="wide")
 
-title("Nassau Candy Product Profitability Dashboard")
+st.title("📊 Nassau Candy Product Profitability Dashboard")
 
-# Load dataset
+st.markdown("""
+### 📈 Business Problem
+
+This interactive dashboard analyzes the profitability of Nassau Candy products by examining sales, profit, regional performance, product categories, and key business metrics.
+
+The objective is to help stakeholders identify high-performing products, profitable regions, and opportunities to improve business decisions through data-driven insights.
+""")
+
 df = pd.read_csv("clean_nassau_candy_data.csv")
 
-# =========================
-# DATA PROCESSING
-# =========================
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
 
-# =========================
-# SIDEBAR FILTER
-# =========================
 st.sidebar.header("Filters")
 
 division_filter = st.sidebar.selectbox(
