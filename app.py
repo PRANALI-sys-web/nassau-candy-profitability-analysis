@@ -109,7 +109,6 @@ top_products = (
     .reset_index()
 )
 
-st.subheader("📊 Top 10 Profitable Products")
 
 fig1 = px.bar(
     top_products,
@@ -128,8 +127,6 @@ fig1.update_layout(
     title_x=0.5
 )
 
-st.plotly_chart(fig1, use_container_width=True)
-
 
 # =========================
 # REGION PROFIT
@@ -140,7 +137,7 @@ region_profit = (
     .reset_index()
 )
 
-st.subheader("🌍 Profit by Region")
+
 
 fig2 = px.bar(
     region_profit,
@@ -159,7 +156,18 @@ fig2.update_layout(
     yaxis_title="Gross Profit"
 )
 
-st.plotly_chart(fig2, use_container_width=True)
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader("📊 Top 10 Profitable Products")
+    st.plotly_chart(fig1, use_container_width=True)
+
+with col2:
+    st.subheader("🌍 Profit by Region")
+    st.plotly_chart(fig2, use_container_width=True)
+
+st.subheader("📈 Units vs Profit Relationship")
+
 
 # =========================
 # UNITS VS PROFIT
