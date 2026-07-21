@@ -160,7 +160,9 @@ if product_search:
             case=False
         )
     ]
-    
+if df.empty:
+    st.warning("⚠️ No data available for the selected filters.")
+    st.stop()   
 # =========================
 # EXECUTIVE SUMMARY
 # =========================
