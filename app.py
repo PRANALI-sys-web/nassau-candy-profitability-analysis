@@ -370,12 +370,12 @@ ax_trend.plot(
     marker="o",
     linewidth=2
 )
-
 ax_trend.set_xticks(x)
+
 ax_trend.set_xticklabels(
     monthly_sales.index,
     rotation=45,
-    ha="right"
+    ha="center"
 )
 
 ax_trend.set_xlim(-0.5, len(x)-0.5)
@@ -383,14 +383,6 @@ ax_trend.set_xlim(-0.5, len(x)-0.5)
 ax_trend.set_xlabel("Month")
 ax_trend.set_ylabel("Sales")
 ax_trend.set_title("Monthly Sales Performance")
-
-# Center the labels
-
-ax_trend.set_xticklabels(
-    monthly_sales.index,
-    rotation=45,
-    ha="center"
-)
 
 plt.tight_layout()
 
@@ -527,7 +519,11 @@ with col5:
 
         ax1.set_xticks(range(len(pareto.index)))
         
-        
+        ax1.set_xticklabels(
+    pareto.index,
+    rotation=45,
+    ha="right"
+)
 
         ax2 = ax1.twinx()
 
