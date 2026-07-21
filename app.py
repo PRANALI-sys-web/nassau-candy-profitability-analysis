@@ -177,23 +177,51 @@ with col2:
 
 
 # =========================
-# UNITS VS PROFIT
+# UNITS VS PROFIT + DIVISION PERFORMANCE
 # =========================
-st.subheader("📈 Units vs Profit Relationship")
 
-fig3, ax3 = plt.subplots(figsize=(8,3.8))
+col1, col2 = st.columns(2)
 
-ax3.scatter(df["Units"], df["Gross Profit"], alpha=0.6)
+with col1:
+    st.subheader("📈 Units vs Profit")
 
-style_plot(ax3)
+    fig3, ax3 = plt.subplots(figsize=(6,3.5))
 
-ax3.set_xlabel("Units Sold")
-ax3.set_ylabel("Gross Profit")
-ax3.set_title("Units vs Profit")
+    ax3.scatter(df["Units"], df["Gross Profit"], alpha=0.6)
 
-plt.tight_layout()
+    style_plot(ax3)
 
-st.pyplot(fig3, use_container_width=True)
+    ax3.set_xlabel("Units Sold")
+    ax3.set_ylabel("Gross Profit")
+    ax3.set_title("Units vs Profit")
+
+    plt.tight_layout()
+
+    st.pyplot(fig3, use_container_width=True)
+
+
+with col2:
+    st.subheader("📊 Division Performance")
+
+    if df.empty:
+        st.warning("No data available")
+
+    else:
+        division_profit = df.groupby("Division")["Gross Profit"].sum()
+
+        fig4, ax4 = plt.subplots(figsize=(6,3.5))
+
+        division_profit.plot(kind="bar", ax=ax4)
+
+        ax4.set_title("Profit by Division")
+        ax4.set_xlabel("Division")
+        ax4.set_ylabel("Profit")
+
+        plt.xticks(rotation=45)
+
+        plt.tight_layout()
+
+        st.pyplot(fig4, use_container_width=True)
 
 # =========================
 # KPI SECTION
