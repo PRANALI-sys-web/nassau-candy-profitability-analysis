@@ -1,4 +1,4 @@
-# 🍫 Nassau Candy Product Line Profitability Analysis
+# Nassau Candy Product Line Profitability Analysis
 
 ## 📌 Project Overview
 
