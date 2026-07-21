@@ -462,57 +462,51 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("📈 Units vs Profit")
 
-    fig3, ax3 = plt.subplots(figsize=(6,3.5))
+fig3 = px.scatter(
+    df,
+    x="Units",
+    y="Gross Profit",
+    color="Division",
+    hover_data=["Product Name"],
+    title=None
+)
 
-    ax3.scatter(
-        df["Units"],
-        df["Gross Profit"],
-        alpha=0.6
-    )
+fig3.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    xaxis_title="Units Sold",
+    yaxis_title="Gross Profit"
+)
 
-    style_plot(ax3)
-
-    ax3.set_xlabel("Units Sold")
-    ax3.set_ylabel("Gross Profit")
-    ax3.set_title("Units vs Profit")
-
-    plt.tight_layout()
-
-    st.pyplot(fig3, use_container_width=True)
+st.plotly_chart(fig3, use_container_width=True)
 
 
 with col2:
     st.subheader("📊 Division Performance")
 
-    division_profit = df.groupby("Division")["Gross Profit"].sum()
+division_profit = (
+    df.groupby("Division")["Gross Profit"]
+    .sum()
+    .reset_index()
+)
 
-    fig4, ax4 = plt.subplots(figsize=(6,3.5))
+fig4 = px.bar(
+    division_profit,
+    x="Division",
+    y="Gross Profit",
+    color="Gross Profit",
+    color_continuous_scale="Blues",
+    text_auto=".2s"
+)
 
-    division_profit.sort_values(ascending=False).plot(
-        kind="bar",
-        ax=ax4
-    )
+fig4.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    xaxis_title="Division",
+    yaxis_title="Profit"
+)
 
-    for container in ax4.containers:
-        ax4.bar_label(
-            container,
-            fmt="%.0f",
-            padding=3
-        )
-
-    ax4.set_xlabel("Division")
-    ax4.set_ylabel("Profit")
-
-    ax4.set_ylim(
-        0,
-        division_profit.max()*1.15
-    )
-
-    plt.xticks(rotation=45)
-
-    plt.tight_layout()
-
-    st.pyplot(fig4, use_container_width=True)
+st.plotly_chart(fig4, use_container_width=True)
 # =========================
 # PARETO + COST VS SALES
 # =========================
@@ -563,25 +557,21 @@ with col5:
 with col6:
     st.subheader("💰 Cost vs Sales")
 
-    if df.empty:
-        st.warning("No data available")
+fig7 = px.scatter(
+    df,
+    x="Cost",
+    y="Sales",
+    color="Division",
+    hover_data=["Product Name"],
+    title=None
+)
 
-    else:
-        fig7, ax7 = plt.subplots(figsize=(6,3.5))
+fig7.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white"
+)
 
-        ax7.scatter(
-            df["Cost"],
-            df["Sales"],
-            alpha=0.6
-        )
-
-        ax7.set_xlabel("Cost")
-        ax7.set_ylabel("Sales")
-        ax7.set_title("Cost vs Sales Relationship")
-
-        plt.tight_layout()
-
-        st.pyplot(fig7, use_container_width=True)# ========================
+st.plotly_chart(fig7, use_container_width=True)# ========================
 st.markdown("---")
 st.caption("Developed by Pranali Wakchaure | Data Analytics Portfolio Project")
 
