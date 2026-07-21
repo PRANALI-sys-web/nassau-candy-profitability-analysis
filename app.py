@@ -305,7 +305,7 @@ ax_trend.set_xticks(x)
 ax_trend.set_xticklabels(
     monthly_sales.index,
     rotation=45,
-    ha="center"
+    ha="right"
 )
 
 ax_trend.set_xlim(-0.5, len(x)-0.5)
