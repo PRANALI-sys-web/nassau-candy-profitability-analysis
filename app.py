@@ -143,12 +143,6 @@ if product_search:
     []
 )
 
-margin_filter = st.sidebar.slider(
-    "Select Min Margin %",
-    0,
-    100,
-    0
-)
 
 product_search = st.sidebar.text_input(
     "Search Product"
