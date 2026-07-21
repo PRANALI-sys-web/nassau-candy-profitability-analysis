@@ -241,30 +241,42 @@ with col2:
 # =========================
 # KPI SECTION
 # =========================
+
 st.subheader("📌 Key Performance Indicators")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 
+# Total Sales
 col1.metric(
     "💰 Total Sales",
     f"${df['Sales'].sum():,.0f}"
 )
 
+# Total Profit
 col2.metric(
     "📈 Total Profit",
     f"${df['Gross Profit'].sum():,.0f}"
 )
 
+# Profit Margin
+profit_margin = (df['Gross Profit'].sum() / df['Sales'].sum()) * 100
+
 col3.metric(
+    "📊 Profit Margin",
+    f"{profit_margin:.2f}%"
+)
+
+# Units Sold
+col4.metric(
     "📦 Units Sold",
     f"{int(df['Units'].sum()):,}"
 )
 
-col4.metric(
-    "📊 Avg Margin",
-    f"{df['Margin %'].mean():.2f}%"
+# Products Count
+col5.metric(
+    "🛒 Products",
+    f"{df['Product Name'].nunique():,}"
 )
-
 # =========================
 # DIVISION PERFORMANCE
 # =========================
