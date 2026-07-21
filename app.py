@@ -19,6 +19,14 @@ section[data-testid="stSidebar"]{
     min-width:260px !important;
     max-width:260px !important;
 }
+/* Sidebar Labels White */
+section[data-testid="stSidebar"] .stMarkdown p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: white !important;
+}
 
 /* Main Title */
 h1{
