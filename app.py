@@ -241,15 +241,6 @@ with col2:
         ax4.set_ylabel("Profit")
 
         plt.xticks(rotation=45)
-        plt.tight_layout()
-
-        st.pyplot(fig4, use_container_width=True)
-
-    ax4.set_title("Profit by Division")
-    ax4.set_xlabel("Division")
-    ax4.set_ylabel("Profit")
-
-        plt.xticks(rotation=45)
 
         plt.tight_layout()
 
