@@ -290,8 +290,19 @@ monthly_sales = (
 
 monthly_sales.index = monthly_sales.index.astype(str)
 
-fig_trend, ax_trend = plt.subplots(figsize=(10,4))
 x = range(len(monthly_sales.index))
+
+fig_trend, ax_trend = plt.subplots(figsize=(10,4))
+
+ax_trend.plot(
+    x,
+    monthly_sales.values,
+    marker="o"
+)
+
+ax_trend.set_xlabel("Month")
+ax_trend.set_ylabel("Sales")
+ax_trend.set_title("Monthly Sales Performance")
 
 ax_trend.set_xticks(x)
 ax_trend.set_xticklabels(
@@ -299,11 +310,6 @@ ax_trend.set_xticklabels(
     rotation=45,
     ha="center"
 )
-ax_trend.set_xlabel("Month")
-ax_trend.set_ylabel("Sales")
-ax_trend.set_title("Monthly Sales Performance")
-
-plt.xticks(rotation=45)
 
 plt.tight_layout()
 
