@@ -306,7 +306,7 @@ else:
 # =========================
 # PARETO + COST VS SALES
 # =========================
-
+col5, col6 = st.columns(2)
 with col5:
     st.subheader("📊 Pareto Analysis")
 
