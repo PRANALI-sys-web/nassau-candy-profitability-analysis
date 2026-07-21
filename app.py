@@ -85,10 +85,13 @@ The objective is to help stakeholders identify high-performing products, profita
 
 
 df = pd.read_csv("clean_nassau_candy_data.csv")
-st.write(df.columns)
 
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
+df["Order Date"] = pd.to_datetime(
+    df["Order Date"],
+    errors="coerce"
+)
 
 st.sidebar.title("🎛️ Dashboard Filters")
 
@@ -121,6 +124,11 @@ margin_filter = st.sidebar.slider(
 product_search = st.sidebar.text_input(
     "Search Product"
 )
+if len(date_range) == 2:
+    df = df[
+        (df["Order Date"] >= pd.to_datetime(date_range[0])) &
+        (df["Order Date"] <= pd.to_datetime(date_range[1]))
+    ]
 
 
 
@@ -138,10 +146,6 @@ if product_search:
             case=False
         )
     ]
-    date_range = st.sidebar.date_input(
-    "Select Date Range",
-    []
-)
 
 
 # =========================
@@ -277,11 +281,6 @@ col5.metric(
 # =========================
 
 st.subheader("📈 Sales Trend Over Time")
-
-df["Order Date"] = pd.to_datetime(
-    df["Order Date"],
-    errors="coerce"
-)
 
 monthly_sales = (
     df.groupby(df["Order Date"].dt.to_period("M"))["Sales"]
