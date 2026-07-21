@@ -134,24 +134,32 @@ st.plotly_chart(fig1, use_container_width=True)
 # =========================
 # REGION PROFIT
 # =========================
-region_profit = df.groupby("Region")["Gross Profit"].sum()
+region_profit = (
+    df.groupby("Region")["Gross Profit"]
+    .sum()
+    .reset_index()
+)
 
 st.subheader("🌍 Profit by Region")
 
-fig2, ax2 = plt.subplots(figsize=(8,3.5))
+fig2 = px.bar(
+    region_profit,
+    x="Region",
+    y="Gross Profit",
+    color="Gross Profit",
+    color_continuous_scale="Teal",
+    title="Profit Distribution by Region"
+)
 
-region_profit.plot(kind="bar", ax=ax2, color="orange")
+fig2.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    title_x=0.5,
+    xaxis_title="Region",
+    yaxis_title="Gross Profit"
+)
 
-style_plot(ax2)
-
-ax2.set_title("Profit Distribution by Region")
-ax2.set_xlabel("Region")
-ax2.set_ylabel("Gross Profit")
-
-plt.xticks(rotation=30)
-plt.tight_layout()
-
-st.pyplot(fig2, use_container_width=True)
+st.plotly_chart(fig2, use_container_width=True)
 
 # =========================
 # UNITS VS PROFIT
