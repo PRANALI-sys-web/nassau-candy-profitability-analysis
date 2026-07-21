@@ -75,7 +75,7 @@ Python | Streamlit | Pandas | Matplotlib
 ---
 """)
 st.markdown("""
-#### 📈 Business Problem
+#### 🎯 Business Problem
 
 The dashboard analyzes the profitability of Nassau Candy products by examining sales, profit, regional performance, product categories, and key business metrics.
 
@@ -190,6 +190,7 @@ fig1.update_layout(
     xaxis_title="Product",
     yaxis_title="Gross Profit",
     xaxis_title_standoff=20,
+    xaxis_tickangle=45,
     margin=dict(l=20, r=20, t=20, b=80)
 )
 
