@@ -43,13 +43,13 @@ h2,h3{
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<h1 style='font-size:34px; margin-bottom:0px;'>
+<h1 style='font-size:30px;font-weight:700;margin-bottom:0px;'>
 📊 Nassau Candy Product Profitability Dashboard
 </h1>
 """, unsafe_allow_html=True)
 
 st.markdown("""
-### 📈 Business Problem
+#### 📈 Business Problem
 
 This interactive dashboard analyzes the profitability of Nassau Candy products by examining sales, profit, regional performance, product categories, and key business metrics.
 
@@ -94,8 +94,8 @@ def style_plot(ax):
 # =========================
 # DATA PREVIEW
 # =========================
-st.subheader("Dataset Preview")
-st.dataframe(df.head())
+st.subheader("📄 Dataset Preview")
+st.dataframe(df.head(), height=220, use_container_width=True)
 
 # =========================
 # TOP PRODUCTS
@@ -109,7 +109,7 @@ top_products = (
 
 st.subheader("📊 Top 10 Profitable Products")
 
-fig1, ax1 = plt.subplots(figsize=(12,5))
+fig1, ax1 = plt.subplots(figsize=(9,4))
 
 top_products.plot(kind="bar", ax=ax1, color="skyblue")
 
@@ -122,7 +122,7 @@ ax1.set_ylabel("Gross Profit")
 plt.xticks(rotation=60, ha='right')
 plt.tight_layout()
 
-st.pyplot(fig1)
+st.pyplot(fig1, use_container_width=True)
 
 # =========================
 # REGION PROFIT
@@ -131,7 +131,7 @@ region_profit = df.groupby("Region")["Gross Profit"].sum()
 
 st.subheader("🌍 Profit by Region")
 
-fig2, ax2 = plt.subplots(figsize=(10,4))
+fig2, ax2 = plt.subplots(figsize=(8,3.5))
 
 region_profit.plot(kind="bar", ax=ax2, color="orange")
 
@@ -144,14 +144,14 @@ ax2.set_ylabel("Gross Profit")
 plt.xticks(rotation=30)
 plt.tight_layout()
 
-st.pyplot(fig2)
+st.pyplot(fig2, use_container_width=True)
 
 # =========================
 # UNITS VS PROFIT
 # =========================
 st.subheader("📈 Units vs Profit Relationship")
 
-fig3, ax3 = plt.subplots(figsize=(10,5))
+fig3, ax3 = plt.subplots(figsize=(8,3.8))
 
 ax3.scatter(df["Units"], df["Gross Profit"], alpha=0.6)
 
@@ -163,7 +163,7 @@ ax3.set_title("Units vs Profit")
 
 plt.tight_layout()
 
-st.pyplot(fig3)
+st.pyplot(fig3, use_container_width=True)
 
 # =========================
 # KPI SECTION
