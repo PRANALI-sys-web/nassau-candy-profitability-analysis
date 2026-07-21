@@ -229,22 +229,25 @@ with col2:
 
         division_profit.plot(kind="bar", ax=ax4)
 
-        for container in ax4.containers:
-            ax4.bar_label(
-                container,
-                fmt="%.0f",
-                padding=3
-            )
+      for container in ax4.containers:
+    ax4.bar_label(
+        container,
+        fmt="%.0f",
+        padding=3
+    )
 
-        ax4.set_title("Profit by Division")
-        ax4.set_xlabel("Division")
-        ax4.set_ylabel("Profit")
+ax4.set_xlabel("Division")
+ax4.set_ylabel("Profit")
 
-        plt.xticks(rotation=45)
+ax4.set_ylim(
+    0,
+    division_profit.max() * 1.15
+)
 
-        plt.tight_layout()
+plt.xticks(rotation=45)
+plt.tight_layout()
 
-        st.pyplot(fig4, use_container_width=True)
+st.pyplot(fig4, use_container_width=True)
 
 # =========================
 # KPI SECTION
