@@ -314,6 +314,63 @@ plt.tight_layout()
 
 st.pyplot(fig_trend, use_container_width=True)
 # =========================
+# BUSINESS INSIGHTS
+# =========================
+
+st.subheader("💡 Business Insights")
+
+# Top Division by Profit
+top_division = (
+    df.groupby("Division")["Gross Profit"]
+    .sum()
+    .idxmax()
+)
+
+top_division_profit = (
+    df.groupby("Division")["Gross Profit"]
+    .sum()
+    .max()
+)
+
+# Top Product by Profit
+top_product = (
+    df.groupby("Product Name")["Gross Profit"]
+    .sum()
+    .idxmax()
+)
+
+top_product_profit = (
+    df.groupby("Product Name")["Gross Profit"]
+    .sum()
+    .max()
+)
+
+# Average Margin
+avg_margin = df["Margin %"].mean()
+
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.info(
+        f"🏆 Top Performing Division\n\n"
+        f"{top_division}\n\n"
+        f"Profit: ${top_division_profit:,.0f}"
+    )
+
+with col2:
+    st.success(
+        f"📦 Highest Profit Product\n\n"
+        f"{top_product}\n\n"
+        f"Profit: ${top_product_profit:,.0f}"
+    )
+
+with col3:
+    st.warning(
+        f"📊 Average Margin\n\n"
+        f"{avg_margin:.2f}%"
+    )
+# =========================
 # DIVISION PERFORMANCE
 # =========================
 
