@@ -160,6 +160,56 @@ if product_search:
             case=False
         )
     ]
+    # =========================
+# EXECUTIVE SUMMARY
+# =========================
+
+st.subheader("📌 Executive Summary")
+
+total_sales = df["Sales"].sum()
+total_profit = df["Gross Profit"].sum()
+
+top_region = (
+    df.groupby("Region")["Gross Profit"]
+    .sum()
+    .idxmax()
+)
+
+top_division = (
+    df.groupby("Division")["Gross Profit"]
+    .sum()
+    .idxmax()
+)
+
+top_product = (
+    df.groupby("Product Name")["Gross Profit"]
+    .sum()
+    .idxmax()
+)
+
+avg_margin = df["Margin %"].mean()
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("💰 Total Sales", f"${total_sales:,.0f}")
+
+with col2:
+    st.metric("📈 Total Profit", f"${total_profit:,.0f}")
+
+with col3:
+    st.metric("📊 Avg Margin", f"{avg_margin:.2f}%")
+
+col4, col5, col6 = st.columns(3)
+
+with col4:
+    st.metric("🏆 Best Region", top_region)
+
+with col5:
+    st.metric("🏢 Top Division", top_division)
+
+with col6:
+    st.metric("📦 Top Product", top_product)
 
 
 # =========================
