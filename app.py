@@ -53,7 +53,7 @@ h2,h3{
 
 st.markdown("""
 <h1 style='font-size:30px;font-weight:700;margin-bottom:0px;'>
-📊 Nassau Candy Product Profitability Dashboard
+📈 Sales Performance & Profitability Analytics Dashboard
 </h1>
 """, unsafe_allow_html=True)
 
