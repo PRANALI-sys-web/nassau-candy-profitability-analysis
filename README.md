@@ -114,18 +114,8 @@ The interactive dashboard provides:
 
 # 📸 Dashboard Preview
 
-(Add screenshots of your Streamlit dashboard here)
+<img width="1445" height="642" alt="image" src="https://github.com/user-attachments/assets/d81279b2-d388-4145-843d-6fec2af59e79" />
 
-Example:
-
-```
-images/
- ├── dashboard_home.png
- ├── product_analysis.png
- └── profitability_analysis.png
-```
-
----
 
 # 📂 Project Structure
 
