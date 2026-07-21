@@ -23,11 +23,12 @@ df = pd.read_csv("clean_nassau_candy_data.csv")
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
 
-st.sidebar.header("Filters")
+st.sidebar.title("🎛️ Dashboard Filters")
 
-division_filter = st.sidebar.selectbox(
-    "Select Division",
-    ["All"] + list(df["Division"].dropna().unique())
+st.sidebar.markdown("---")
+
+st.sidebar.info(
+    "Use the filters below to explore the Nassau Candy sales and profitability data."
 )
 
 if division_filter != "All":
