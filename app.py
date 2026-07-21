@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-import plotly.graph_objects as go
+
 st.set_page_config(
     page_title="Sales Performance Dashboard",
     page_icon="📊",
@@ -190,7 +190,7 @@ top_product = (
 
 avg_margin = df["Margin %"].mean()
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric("💰 Total Sales", f"${total_sales:,.0f}")
@@ -201,16 +201,22 @@ with col2:
 with col3:
     st.metric("📊 Avg Margin", f"{avg_margin:.2f}%")
 
-col4, col5, col6 = st.columns(3)
-
 with col4:
-    st.metric("🏆 Best Region", top_region)
+    st.metric("📦 Units Sold", f"{int(df['Units'].sum()):,}")
+
+col5, col6, col7, col8 = st.columns(4)
 
 with col5:
-    st.metric("🏢 Top Division", top_division)
+    st.metric("🏆 Best Region", top_region)
 
 with col6:
+    st.metric("🏢 Top Division", top_division)
+
+with col7:
     st.metric("📦 Top Product", top_product)
+
+with col8:
+    st.metric("🛒 Products", f"{df['Product Name'].nunique():,}")
 
 
 # =========================
@@ -227,7 +233,7 @@ def style_plot(ax):
 # DATA PREVIEW
 # =========================
 st.subheader("📄 Dataset Preview")
-st.dataframe(df.head(), height=220, use_container_width=True)
+st.dataframe(df), height=220, use_container_width=True)
 csv = df.to_csv(index=False).encode("utf-8")
 
 st.download_button(
@@ -307,46 +313,6 @@ with col2:
     st.plotly_chart(fig2, use_container_width=True)
 
     
-
-# =========================
-# KPI SECTION
-# =========================
-
-st.subheader("📌 Key Performance Indicators")
-
-col1, col2, col3, col4, col5 = st.columns(5)
-
-# Total Sales
-col1.metric(
-    "💰 Total Sales",
-    f"${df['Sales'].sum():,.0f}"
-)
-
-# Total Profit
-col2.metric(
-    "📈 Total Profit",
-    f"${df['Gross Profit'].sum():,.0f}"
-)
-
-# Profit Margin
-profit_margin = (df['Gross Profit'].sum() / df['Sales'].sum()) * 100
-
-col3.metric(
-    "📊 Profit Margin",
-    f"{profit_margin:.2f}%"
-)
-
-# Units Sold
-col4.metric(
-    "📦 Units Sold",
-    f"{int(df['Units'].sum()):,}"
-)
-
-# Products Count
-col5.metric(
-    "🛒 Products",
-    f"{df['Product Name'].nunique():,}"
-)
 # =========================
 # SALES TREND ANALYSIS
 # =========================
@@ -383,7 +349,7 @@ ax_trend.set_xlim(-0.5, len(x)-0.5)
 ax_trend.set_xlabel("Month")
 ax_trend.set_ylabel("Sales")
 ax_trend.set_title("Monthly Sales Performance")
-
+style_plot(ax_trend)
 plt.tight_layout()
 
 st.pyplot(fig_trend, use_container_width=True)
@@ -536,7 +502,7 @@ with col5:
 
         ax2.set_ylabel("Cumulative %")
         ax2.set_ylim(0,100)
-
+        style_plot(ax1)
         plt.tight_layout()
 
         st.pyplot(fig, use_container_width=True)
