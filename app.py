@@ -284,7 +284,10 @@ col5.metric(
 
 st.subheader("📈 Sales Trend Over Time")
 
-df["Order Date"] = pd.to_datetime(df["Order Date"])
+df["Order Date"] = pd.to_datetime(
+    df["Order Date"],
+    errors="coerce"
+)
 
 monthly_sales = (
     df.groupby(df["Order Date"].dt.to_period("M"))["Sales"]
