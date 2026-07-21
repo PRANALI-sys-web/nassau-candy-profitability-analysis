@@ -190,7 +190,7 @@ fig1.update_layout(
     xaxis_title="Product",
     yaxis_title="Gross Profit",
     xaxis_title_standoff=20,
-    xaxis_tickangle=45,
+    xaxis_tickangle=-45,
     margin=dict(l=20, r=20, t=20, b=80)
 )
 
