@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import plotly.express as px
+import plotly.graph_objects as go
 st.set_page_config(layout="wide")
 st.markdown("""
 <style>
@@ -105,22 +106,29 @@ top_products = (
     .sum()
     .sort_values(ascending=False)
     .head(10)
+    .reset_index()
 )
 
 st.subheader("📊 Top 10 Profitable Products")
 
-fig1, ax1 = plt.subplots(figsize=(9,4))
+fig1 = px.bar(
+    top_products,
+    x="Product Name",
+    y="Gross Profit",
+    color="Gross Profit",
+    color_continuous_scale="Blues",
+    title="Top 10 Products by Profit"
+)
 
-top_products.plot(kind="bar", ax=ax1, color="skyblue")
+fig1.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    xaxis_title="Product",
+    yaxis_title="Gross Profit",
+    title_x=0.5
+)
 
-style_plot(ax1)
-
-ax1.set_title("Top 10 Products by Profit")
-ax1.set_xlabel("Product Name")
-ax1.set_ylabel("Gross Profit")
-
-plt.xticks(rotation=60, ha='right')
-plt.tight_layout()
+st.plotly_chart(fig1, use_container_width=True)
 
 st.pyplot(fig1, use_container_width=True)
 
