@@ -269,52 +269,135 @@ else:
     ax5.set_title("Margin % by Division")
     st.pyplot(fig5)
 
-st.subheader("Pareto Analysis (Top Profit Contributors)")
+# =========================
+# PARETO + COST VS SALES
+# =========================
 
-if df.empty:
-    st.warning("No data available")
-else:
-    pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False).head(10)
+col5, col6 = st.columns(2)
 
-    # cumulative %
-    pareto_cum = pareto.cumsum() / pareto.sum() * 100
+with col5:
+    st.subheader("📊 Pareto Analysis")
 
-    fig, ax1 = plt.subplots(figsize=(10,5))
+    if df.empty:
+        st.warning("No data available")
 
-    # Bar chart (Profit)
-    ax1.bar(pareto.index, pareto.values)
-    ax1.set_ylabel("Profit")
-    ax1.set_xticklabels(pareto.index, rotation=45, ha='right')
+    else:
+        pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False).head(10)
 
-    # Line chart (Cumulative %)
-    ax2 = ax1.twinx()
-    ax2.plot(pareto.index, pareto_cum, color='red', marker='o')
-    ax2.set_ylabel("Cumulative %")
+        pareto_cum = pareto.cumsum() / pareto.sum() * 100
 
-    # ✅ Fix duplicate ticks
-    ax2.set_yticks([0, 20, 40, 60, 80, 100])
-    ax2.set_ylim(0, 100)
+        fig, ax1 = plt.subplots(figsize=(6,3.5))
 
-    # 80% line
-    ax2.axhline(80, linestyle='--', color='green', label='80% Threshold')
-    ax2.legend()
+        ax1.bar(pareto.index, pareto.values)
 
-    plt.xticks(rotation=45, ha='right')
-    plt.tight_layout()
+        ax1.set_ylabel("Profit")
+        ax1.set_title("Top Profit Contributors")
 
-    st.pyplot(fig)
+        plt.xticks(rotation=45, ha="right")
 
-st.subheader("Cost vs Sales Analysis")
+        ax2 = ax1.twinx()
 
-if df.empty:
-    st.warning("No data available")
-else:
-    fig7, ax7 = plt.subplots(figsize=(8,4))
-    ax7.scatter(df["Cost"], df["Sales"])
-    ax7.set_xlabel("Cost")
-    ax7.set_ylabel("Sales")
-    ax7.set_title("Cost vs Sales")
-    st.pyplot(fig7)
+        ax2.plot(
+            pareto.index,
+            pareto_cum,
+            color="red",
+            marker="o"
+        )
+
+        ax2.set_ylabel("Cumulative %")
+        ax2.set_ylim(0,100)
+
+        plt.tight_layout()
+
+        st.pyplot(fig, use_container_width=True)
+
+
+with col6:
+    st.subheader("💰 Cost vs Sales")
+
+    if df.empty:
+        st.warning("No data available")
+
+    else:
+        fig7, ax7 = plt.subplots(figsize=(6,3.5))
+
+        ax7.scatter(
+            df["Cost"],
+            df["Sales"],
+            alpha=0.6
+        )
+
+        ax7.set_xlabel("Cost")
+        ax7.set_ylabel("Sales")
+        ax7.set_title("Cost vs Sales Relationship")
+
+        plt.tight_layout()
+
+        st.pyplot(fig7, use_container_width=True)# =========================
+# PARETO + COST VS SALES
+# =========================
+
+col5, col6 = st.columns(2)
+
+with col5:
+    st.subheader("📊 Pareto Analysis")
+
+    if df.empty:
+        st.warning("No data available")
+
+    else:
+        pareto = df.groupby("Product Name")["Gross Profit"].sum().sort_values(ascending=False).head(10)
+
+        pareto_cum = pareto.cumsum() / pareto.sum() * 100
+
+        fig, ax1 = plt.subplots(figsize=(6,3.5))
+
+        ax1.bar(pareto.index, pareto.values)
+
+        ax1.set_ylabel("Profit")
+        ax1.set_title("Top Profit Contributors")
+
+        plt.xticks(rotation=45, ha="right")
+
+        ax2 = ax1.twinx()
+
+        ax2.plot(
+            pareto.index,
+            pareto_cum,
+            color="red",
+            marker="o"
+        )
+
+        ax2.set_ylabel("Cumulative %")
+        ax2.set_ylim(0,100)
+
+        plt.tight_layout()
+
+        st.pyplot(fig, use_container_width=True)
+
+
+with col6:
+    st.subheader("💰 Cost vs Sales")
+
+    if df.empty:
+        st.warning("No data available")
+
+    else:
+        fig7, ax7 = plt.subplots(figsize=(6,3.5))
+
+        ax7.scatter(
+            df["Cost"],
+            df["Sales"],
+            alpha=0.6
+        )
+
+        ax7.set_xlabel("Cost")
+        ax7.set_ylabel("Sales")
+        ax7.set_title("Cost vs Sales Relationship")
+
+        plt.tight_layout()
+
+        st.pyplot(fig7, use_container_width=True)
 
 date_range = st.sidebar.date_input("Select Date Range", [])
 
