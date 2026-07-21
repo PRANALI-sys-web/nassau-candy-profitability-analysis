@@ -233,7 +233,11 @@ def style_plot(ax):
 # DATA PREVIEW
 # =========================
 st.subheader("📄 Dataset Preview")
-st.dataframe(df), height=220, use_container_width=True)
+st.dataframe(
+    df,
+    height=220,
+    use_container_width=True
+)
 csv = df.to_csv(index=False).encode("utf-8")
 
 st.download_button(
