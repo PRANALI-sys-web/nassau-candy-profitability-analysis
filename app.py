@@ -411,24 +411,31 @@ else:
         st.pyplot(fig4, use_container_width=True)
 
 
-    # Margin % by Division
-    with col4:
-        st.subheader("📈 Margin % by Division")
+   # Margin % by Division
+with col4:
+    st.subheader("📈 Margin % by Division")
 
-        fig5, ax5 = plt.subplots(figsize=(6,3.5))
+    fig5, ax5 = plt.subplots(figsize=(6,3.5))
 
-        division_margin.sort_values(ascending=False).plot(
-            kind="bar",
-            ax=ax5
+    division_margin.sort_values(ascending=False).plot(
+        kind="bar",
+        ax=ax5
+    )
+
+    for container in ax5.containers:
+        ax5.bar_label(
+            container,
+            fmt="%.1f%%",
+            padding=3
         )
 
-        ax5.set_xlabel("Division")
-        ax5.set_ylabel("Margin %")
+    ax5.set_xlabel("Division")
+    ax5.set_ylabel("Margin %")
 
-        plt.xticks(rotation=45)
-        plt.tight_layout()
+    plt.xticks(rotation=45)
+    plt.tight_layout()
 
-        st.pyplot(fig5, use_container_width=True)
+    st.pyplot(fig5, use_container_width=True)
 
 # =========================
 # PARETO + COST VS SALES
