@@ -151,7 +151,8 @@ fig2.update_layout(
     plot_bgcolor="white",
     paper_bgcolor="white",
     xaxis_title="Region",
-    yaxis_title="Gross Profit"
+    yaxis_title="Gross Profit",
+    margin=dict(l=40, r=20, t=20, b=120)
 )
 
 col1, col2 = st.columns(2)
