@@ -463,16 +463,17 @@ with col2:
         text_auto=".2s"
     )
 
-    fig4.update_layout(
+        fig4.update_layout(
         plot_bgcolor="white",
         paper_bgcolor="white",
         xaxis_title="Division",
         yaxis_title="Profit"
     )
 
-    # FIXED: keep small-division bars readable next to the big one (log scale)
-    fig4.update_yaxes(type="log")
-    fig4.update_traces(textposition="outside")
+    fig4.update_traces(
+        texttemplate='%{y:,.0f}',
+        textposition="outside"
+    )
 
     st.plotly_chart(fig4, use_container_width=True)
 
