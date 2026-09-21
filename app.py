@@ -103,7 +103,6 @@ df = pd.read_csv("clean_nassau_candy_data.csv")
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
 
-# FIXED: explicit format parsing so mixed date formats don't silently misparse
 df["Order Date"] = pd.to_datetime(
     df["Order Date"],
     errors="coerce",
@@ -193,7 +192,6 @@ top_product = (
     .idxmax()
 )
 
-# FIXED: sales-weighted average margin instead of a plain row-level mean
 avg_margin = (df["Gross Profit"].sum() / df["Sales"].sum()) * 100
 
 col1, col2, col3, col4 = st.columns(4)
@@ -219,7 +217,6 @@ with col6:
     st.metric("🏢 Top Division", top_division)
 
 with col7:
-    # FIXED: truncate long product name so it doesn't overflow the metric card, full name on hover
     top_product_display = top_product if len(top_product) <= 18 else top_product[:15] + "..."
     st.metric("📦 Top Product", top_product_display, help=top_product)
 
@@ -459,11 +456,10 @@ with col2:
         x="Division",
         y="Gross Profit",
         color="Gross Profit",
-        color_continuous_scale="Blues",
-        text_auto=".2s"
+        color_continuous_scale="Blues"
     )
 
-        fig4.update_layout(
+    fig4.update_layout(
         plot_bgcolor="white",
         paper_bgcolor="white",
         xaxis_title="Division",
@@ -517,7 +513,6 @@ with col5:
             marker="o"
         )
 
-        # FIXED: standard 80% Pareto threshold line, interviewers look for this
         ax2.axhline(80, color="gray", linestyle="--", linewidth=1)
 
         ax2.set_ylabel("Cumulative %")
