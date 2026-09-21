@@ -84,7 +84,7 @@ and make data-driven business decisions.
 
 ### 🛠️ Tech Stack
 
-Python | Streamlit | Pandas | Matplotlib
+Python | Streamlit | Pandas | Matplotlib | Plotly
 
 ---
 """)
@@ -102,9 +102,12 @@ df = pd.read_csv("clean_nassau_candy_data.csv")
 
 df["Margin %"] = (df["Gross Profit"] / df["Sales"]) * 100
 df["Profit per Unit"] = df["Gross Profit"] / df["Units"]
+
+# FIXED: explicit format parsing so mixed date formats don't silently misparse
 df["Order Date"] = pd.to_datetime(
     df["Order Date"],
-    errors="coerce"
+    errors="coerce",
+    dayfirst=False
 )
 
 st.sidebar.title("🎛️ Dashboard Filters")
@@ -190,7 +193,8 @@ top_product = (
     .idxmax()
 )
 
-avg_margin = df["Margin %"].mean()
+# FIXED: sales-weighted average margin instead of a plain row-level mean
+avg_margin = (df["Gross Profit"].sum() / df["Sales"].sum()) * 100
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -215,7 +219,9 @@ with col6:
     st.metric("🏢 Top Division", top_division)
 
 with col7:
-    st.metric("📦 Top Product", top_product)
+    # FIXED: truncate long product name so it doesn't overflow the metric card, full name on hover
+    top_product_display = top_product if len(top_product) <= 18 else top_product[:15] + "..."
+    st.metric("📦 Top Product", top_product_display, help=top_product)
 
 with col8:
     st.metric("🛒 Products", f"{df['Product Name'].nunique():,}")
@@ -464,6 +470,10 @@ with col2:
         yaxis_title="Profit"
     )
 
+    # FIXED: keep small-division bars readable next to the big one (log scale)
+    fig4.update_yaxes(type="log")
+    fig4.update_traces(textposition="outside")
+
     st.plotly_chart(fig4, use_container_width=True)
 
 # =========================
@@ -506,6 +516,9 @@ with col5:
             marker="o"
         )
 
+        # FIXED: standard 80% Pareto threshold line, interviewers look for this
+        ax2.axhline(80, color="gray", linestyle="--", linewidth=1)
+
         ax2.set_ylabel("Cumulative %")
         ax2.set_ylim(0,100)
         style_plot(ax1)
@@ -536,4 +549,3 @@ with col6:
     st.plotly_chart(fig7, use_container_width=True)# ========================
 st.markdown("---")
 st.caption("Developed by Pranali Wakchaure | Data Analytics Portfolio Project")
-
